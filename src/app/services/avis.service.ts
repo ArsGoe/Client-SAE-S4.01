@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Avis } from '../models/avis';
-import {Evenement} from "../models/evenement";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,8 @@ export class AvisService {
     return this.http.get<Avis[]>(this.url);
   }
 
-  getAvi(id: number): Observable<Evenement> {
-    return this.http.get<Evenement>(`${this.url}/${id}`);
+  getAvi(id: number): Observable<Avis> {
+    return this.http.get<Avis>(`${this.url}/${id}`);
   }
 
   createAvis(avis: Avis): Observable<Avis> {
