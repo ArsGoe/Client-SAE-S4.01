@@ -8,8 +8,6 @@ export interface Evenement {
   dateEvent: Date;
   type: TypeEvenement;
   lieu: Lieu;
-  artistes: Artiste[];
-  prix: Prix[];
 }
 
 export enum TypeEvenement {
