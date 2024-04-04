@@ -9,7 +9,7 @@ import { Reservation } from '../models/reservation';
 })
 export class ReservationService {
 
-  private readonly url = 'api/reservations';
+  private url = '';
 
   constructor(private http: HttpClient) {}
 
