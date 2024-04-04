@@ -9,7 +9,7 @@ import { Artiste } from '../models/artiste';
 })
 export class ArtisteService {
 
-  private readonly url = '';
+  private url = '';
 
   constructor(private http: HttpClient) {}
 

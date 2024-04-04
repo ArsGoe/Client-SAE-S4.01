@@ -10,7 +10,7 @@ import {Evenement} from "../models/evenement";
 })
 export class AvisService {
 
-  private readonly url = 'api/avis';
+  private url = '';
 
   constructor(private http: HttpClient) {
   }

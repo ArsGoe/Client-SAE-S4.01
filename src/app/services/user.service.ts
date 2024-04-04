@@ -9,7 +9,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  private readonly url = '';
+  private url = '';
 
   constructor(private http: HttpClient) {}
 
