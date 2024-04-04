@@ -1,7 +1,7 @@
 export interface Artiste {
   id: number;
   nom: string;
-  genre: Genre[];
+  genre: Genre;
 }
 
 export enum Genre {
