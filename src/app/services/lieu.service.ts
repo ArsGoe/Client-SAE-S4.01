@@ -9,7 +9,7 @@ import { Lieu } from '../models/lieu';
 })
 export class LieuService {
 
-  private readonly url = 'api/lieux';
+  private readonly url = '';
 
   constructor(private http: HttpClient) {}
 

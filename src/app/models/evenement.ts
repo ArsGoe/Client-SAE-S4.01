@@ -1,3 +1,6 @@
+import {Lieu} from "./lieu";
+import {Artiste} from "./artiste";
+
 export interface Evenement {
   id: number;
   titre: string;
