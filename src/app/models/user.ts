@@ -6,6 +6,7 @@ export interface User {
   email: string;
   password: string;
   role: Role;
+  token: string;
 }
 
 export enum Role {
@@ -34,5 +35,6 @@ export const ANONYMOUS_USER: User = <User>{
   name: '',
   email: '',
   password: '',
-  role: Role.NON_ACTIF
+  role: Role.NON_ACTIF,
+  token: ''
 };

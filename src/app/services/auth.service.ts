@@ -86,7 +86,6 @@ export class AuthService {
         }
       );
     this.userSubject.next(ANONYMOUS_USER);
-
     this.router.navigate(['/']);
   }
 
