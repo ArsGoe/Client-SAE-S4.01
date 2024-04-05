@@ -41,7 +41,10 @@
       <a [routerLink]="['register']"><span>Register</span></a>
     }
     @else {
-      <a (click)="logout()"><span>Logout</span></a>
+    <a [routerLink]="['profil']"><span>Profil</span></a>
+    <a [routerLink]="['liste-evenement']"><span>Liste des événements</span></a>
+    <a [routerLink]="['liste-reservation']"><span>Liste des réservations</span></a>
+    <a (click)="logout()"><span>Logout</span></a>
     }
   </mat-toolbar>
 </p>
