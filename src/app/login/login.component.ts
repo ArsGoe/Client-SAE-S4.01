@@ -34,6 +34,7 @@ export class LoginComponent {
   constructor(private authService: AuthService,
               private route: ActivatedRoute,
               private router: Router) {
+    console.log("dans login")
   }
 
   get email() {
@@ -45,7 +46,7 @@ export class LoginComponent {
   }
 
   login() {
-    if (!this.form.valid) {
+   if (!this.form.valid) {
       return;
     }
     this.authService.login(
@@ -62,5 +63,5 @@ export class LoginComponent {
           }
         }
       );
-  }
+ }
 }
