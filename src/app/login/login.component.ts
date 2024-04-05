@@ -45,6 +45,22 @@ export class LoginComponent {
   }
 
   login() {
-
+    if (!this.form.valid) {
+      return;
+    }
+    this.authService.login(
+      { email: this.email!.value, password: this.password!.value}
+    )
+      .pipe(first())
+      .subscribe({
+          next: () => {
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+            this.router.navigateByUrl(returnUrl);
+          },
+          error: error => {
+            console.log(error);
+          }
+        }
+      );
   }
 }
