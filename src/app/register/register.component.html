@@ -1,0 +1,94 @@
+<div>
+  <a [routerLink]="['../login']">Se connecter</a>
+  <mat-card>
+    <mat-card-title>Enregistrement</mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+        <mat-form-field>
+          <input type="email" matInput placeholder="Email" formControlName="email">
+          @if (email?.touched && email?.hasError('required')) {
+          <mat-error>
+            L'adresse mail est obligatoire
+          </mat-error>
+          }
+          @if (email?.touched && email?.hasError('email')) {
+          <mat-error>
+            Doit être une adresse mail valide
+          </mat-error>
+          }
+        </mat-form-field>
+        <!--champ name-->
+        <mat-form-field>
+          <input type="text" matInput placeholder="Nom" formControlName="name">
+          @if (name?.touched && name?.hasError('required')) {
+          <mat-error>
+            Le nom est obligatoire
+          </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Prenom" formControlName="prenom">
+          @if (prenom?.touched && prenom?.hasError('required')) {
+          <mat-error>
+            Le prenom est obligatoire
+          </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Adresse" formControlName="adresse">
+          @if (adresse?.touched && adresse?.hasError('required')) {
+          <mat-error>
+            L'adresse est obligatoire
+          </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Ville" formControlName="ville">
+          @if (ville?.touched && ville?.hasError('required')) {
+          <mat-error>
+            La ville est obligatoire
+          </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Code postal" formControlName="codePostal">
+          @if (codePostal?.touched && codePostal?.hasError('required')) {
+          <mat-error>
+            Le code postal est obligatoire
+          </mat-error>
+          }
+        </mat-form-field>
+        <!--champ password-->
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+          @if (password?.touched && password?.hasError('required')) {
+          <mat-error>
+            Le mot de passe est obligatoire
+          </mat-error>
+          }
+        </mat-form-field>
+        <!--champ password confirmation-->
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password Confirmation" formControlName="passwordConfirm">
+          @if (passwordConfirm?.touched && passwordConfirm?.hasError('required')) {
+          <mat-error>
+            La confirmation du mot de passe est obligatoire
+          </mat-error>
+          }
+        </mat-form-field>
+        @if (passwordConfirm?.dirty && this.registerForm.hasError('passwordsNotMatching')) {
+        <mat-error>
+          Les mots de passe saisis ne sont pas identiques !
+        </mat-error>
+        }
+        <div class="button">
+          <!-- Button is disabled(not clickable), if our RegisterForm contains Validation Errors -->
+          <button type="submit" mat-button [disabled]="!registerForm.valid">Enregistrement</button>
+        </div>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>
