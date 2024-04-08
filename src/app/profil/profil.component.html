@@ -1,1 +1,14 @@
-<p>profil works!</p>
+<div class="client-profile">
+  <h2>{{ client?.nom }} {{ client?.prenom }}</h2>
+  <p>Statut : {{ client?.user?.role }}</p> <h3>Informations Personnelles</h3>
+  <ul>
+    <li>Email : {{ client?.user?.email }}</li> <li>Adresse : {{ client?.adresse }}</li>
+    <li>Code postal : {{ client?.codePostal }}</li>
+    <li>Ville : {{ client?.ville }}</li>
+  </ul>
+
+  <h3>Informations de Compte</h3>
+  <ul>
+    <li>Rôle : {{ client?.user?.role }}</li> </ul>
+
+</div>

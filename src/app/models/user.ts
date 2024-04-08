@@ -9,6 +9,11 @@ export interface User {
   token: string;
 }
 
+export interface Identite {
+  email: string;
+  password: string;
+}
+
 export enum Role {
   ADMIN,
   GESTIONNAIRE,
@@ -19,6 +24,7 @@ export enum Role {
 export interface RegisterRequest {
   email: string;
   password: string;
+  name: string;
 }
 
 export interface Profil {

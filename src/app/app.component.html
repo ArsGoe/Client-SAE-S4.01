@@ -5,7 +5,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh
   }
 
   a {
@@ -36,20 +35,23 @@
   <mat-toolbar color="primary" class="menu">
     <a class="titre">TicketMain</a>
     <a [routerLink]="['/']"><span>Accueil</span></a>
-    @if(!isLoggedIn) {
-      <a [routerLink]="['login']"><span>Login</span></a>
-      <a [routerLink]="['register']"><span>Register</span></a>
-    }
-    @else {
+    @if(auth.isLoggedIn$ | async) {
     <a [routerLink]="['profil']"><span>Profil</span></a>
     <a [routerLink]="['liste-evenement']"><span>Liste des événements</span></a>
     <a [routerLink]="['liste-reservation']"><span>Liste des réservations</span></a>
     <a (click)="logout()"><span>Logout</span></a>
     }
+    @else {
+    <a [routerLink]="['login']"><span>Login</span></a>
+    <a [routerLink]="['register']"><span>Register</span></a>
+    }
   </mat-toolbar>
 </p>
 
-<router-outlet></router-outlet>
+<div class="container">
+<div class="main">
+  <router-outlet></router-outlet>
+</div>
 
 <footer>
   <div class="footer-content">
@@ -71,3 +73,4 @@
     </div>
   </div>
 </footer>
+</div>

@@ -8,4 +8,5 @@ export interface Client {
   codePostal: string;
   ville: string;
   user: User;
+  avatar: string;
 }

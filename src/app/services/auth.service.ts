@@ -1,15 +1,17 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, catchError, map, Observable, shareReplay, tap, throwError} from "rxjs";
-import {ANONYMOUS_USER, Profil, RegisterRequest, User} from "../models/user";
+import {ANONYMOUS_USER, Identite, Profil, RegisterRequest, User} from "../models/user";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {environment} from "../../environments/environment";
+import {UserService} from "./user.service";
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+    'Authorization': 'bearer ' + ANONYMOUS_USER.token,
   })
 };
 
@@ -20,7 +22,7 @@ export class AuthService {
   private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(ANONYMOUS_USER);
   public user$: Observable<User> = this.userSubject.asObservable();
 
-  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user.id));
+  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user =>  !!user.id));
   isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
 
   constructor(private http: HttpClient,
@@ -28,7 +30,7 @@ export class AuthService {
               private router: Router) {
   }
 
-  login(credential: RegisterRequest): Observable<User> {
+  login(credential: Identite): Observable<User> {
     return this.http.post<any>(`${environment.apiURL}/login`, credential, httpOptions)
       .pipe(
         map(rep => {
@@ -52,6 +54,7 @@ export class AuthService {
 
   register(request: RegisterRequest): Observable<User> {
     return this.http.post<any>(`${environment.apiURL}/register`, {
+      name: request.name,
       email: request.email,
       password: request.password
     }, httpOptions).pipe(
@@ -78,7 +81,14 @@ export class AuthService {
   logout(): void {
     const oldUser = this.userValue;
     this.http.post<any>(`${environment.apiURL}/logout`, {}, httpOptions)
-      .pipe()
+      .pipe(
+        catchError(err => {
+          console.error('Error during logout:', err);
+          this.userSubject.next(ANONYMOUS_USER);
+          this.router.navigate(['/']);
+          return throwError(err);
+        })
+      )
       .subscribe(user => {
           this.snackbar.open(`A bientôt, ${oldUser.name}`, 'Close', {
             duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'

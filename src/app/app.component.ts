@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {MatToolbar} from "@angular/material/toolbar";
@@ -11,18 +11,16 @@ import {AuthService} from "./services/auth.service";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'clientSae';
-  isLoggedIn: boolean = false;
   constructor(private authService: AuthService, private router: Router) {}
   logout(){
     this.authService.logout();
     this.router.navigate(['/']);
   }
-  ngOnInit(): void {
-    this.authService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-    });
+
+  get auth() {
+    return this.authService;
   }
 }
 

@@ -27,8 +27,8 @@ import {first} from "rxjs";
 })
 export class LoginComponent {
   form: FormGroup = new FormGroup({
-    email: new FormControl("robert.duchmol@domain.fr", [Validators.required, Validators.email]),
-    password: new FormControl("GrosSecret", [Validators.required]),
+    email: new FormControl("benoit.prigent@domain.fr", [Validators.required, Validators.email]),
+    password: new FormControl("LaNoixDeCocoEstUnFruit", [Validators.required]),
   });
 
   constructor(private authService: AuthService,
