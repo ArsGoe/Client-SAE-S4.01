@@ -13,14 +13,12 @@ export class ClientService {
 
   constructor(private http: HttpClient) {}
 
-  getClients(token:string): Observable<Client[]> {
-    const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/Json', 'Content-Type': 'application/json'}
-    return this.http.get<Client[]>(this.url, { headers });
+  getClients(): Observable<Client[]> {
+    return this.http.get<Client[]>(this.url, {});
   }
 
-  getClient(id: number, token:string): Observable<Client> {
-    const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/Json', 'Content-Type': 'application/json'}
-    return this.http.get<Client>(`${this.url}/${id}`, { headers })
+  getClient(id: number): Observable<Client> {
+    return this.http.get<Client>(`${this.url}/${id}`, {})
   }
 
   getMe(token:string): Observable<Client> {

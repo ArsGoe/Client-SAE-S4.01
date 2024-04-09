@@ -31,7 +31,7 @@ export class ProfilComponent implements OnInit{
     this.authService.user$.subscribe(async user => {
       this.user = user;
       if (user) {
-        this.clientService.getClient(user.id, user.jwtToken).subscribe(async client => {
+        this.clientService.getClient(user.id).subscribe(async client => {
           this.client = client;
         });
       }
