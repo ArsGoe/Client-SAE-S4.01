@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.titre[_ngcontent-ng-c2105885682]{
+  padding-right: 50px;
+}
+
 .main {
   flex: 1 1 auto;
   flex-grow: 1;

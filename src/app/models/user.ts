@@ -6,7 +6,7 @@ export interface User {
   email: string;
   password: string;
   role: Role;
-  token: string;
+  jwtToken: string;
 }
 
 export interface Identite {
@@ -42,5 +42,5 @@ export const ANONYMOUS_USER: User = <User>{
   email: '',
   password: '',
   role: Role.NON_ACTIF,
-  token: ''
+  jwtToken: ''
 };
