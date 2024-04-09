@@ -5,6 +5,7 @@ import {ProfilComponent} from "./profil/profil.component";
 import {ListeEvenementComponent} from "./liste-evenement/liste-evenement.component";
 import {ListeReservationComponent} from "./liste-reservation/liste-reservation.component";
 import {DetailEvenementComponent} from "./detail-evenement/detail-evenement.component";
+import {ListeClientsComponent} from "./liste-clients/liste-clients.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,4 +15,5 @@ export const routes: Routes = [
   {path: 'liste-reservation', component: ListeReservationComponent},
   {path: 'detail-evenement/:id', component: DetailEvenementComponent},
   {path: 'suppression-evenement/:id', component: DetailEvenementComponent},
+  {path: 'liste-clients', component: ListeClientsComponent},
 ];

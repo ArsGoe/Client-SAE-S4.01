@@ -6,12 +6,12 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {environment} from "../../environments/environment";
 import {UserService} from "./user.service";
+import {Client} from "../models/client";
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Authorization': 'bearer ' + ANONYMOUS_USER.token,
   })
 };
 
@@ -80,15 +80,10 @@ export class AuthService {
 
   logout(): void {
     const oldUser = this.userValue;
-    this.http.post<any>(`${environment.apiURL}/logout`, {}, httpOptions)
-      .pipe(
-        catchError(err => {
-          console.error('Error during logout:', err);
-          this.userSubject.next(ANONYMOUS_USER);
-          this.router.navigate(['/']);
-          return throwError(err);
-        })
-      )
+    let token = ''
+    this.user$.subscribe(user => {token = user.jwtToken});
+    this.http.post<any>(`${environment.apiURL}/logout`, { 'Authorization': `Bearer ${{token}}`, 'Accept': 'application/Json', 'Content-Type': 'application/json'}, httpOptions)
+      .pipe()
       .subscribe(user => {
           this.snackbar.open(`A bientôt, ${oldUser.name}`, 'Close', {
             duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'

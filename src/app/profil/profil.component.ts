@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Client} from "../models/client";
 import {ActivatedRoute} from "@angular/router";
 import {ClientService} from "../services/client.service";
+import {AuthService} from "../services/auth.service";
+import {Profil, User} from "../models/user";
+import {map} from "rxjs";
+import {copyAssets} from "@angular-devkit/build-angular/src/utils/copy-assets";
+import {ReservationService} from "../services/reservation.service";
 
 @Component({
   selector: 'app-profil',
@@ -11,18 +16,22 @@ import {ClientService} from "../services/client.service";
   styleUrl: './profil.component.css'
 })
 export class ProfilComponent implements OnInit{
-  client: Client | undefined;
+  user: any;
+  client : any;
+  reservations : any;
 
   constructor(
-    private route: ActivatedRoute,
-    private clientService: ClientService
+    private authService: AuthService,
+    private clientService: ClientService,
+    private resservationService: ReservationService,
   ) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const clientId = params['id'];
-      if (clientId) {
-        this.clientService.getClient(clientId).subscribe(client => {
+
+   ngOnInit() {
+    this.authService.user$.subscribe(async user => {
+      this.user = user;
+      if (user) {
+        this.clientService.getClient(user.id).subscribe(async client => {
           this.client = client;
         });
       }

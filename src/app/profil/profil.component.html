@@ -1,14 +1,22 @@
-<div class="client-profile">
-  <h2>{{ client?.nom }} {{ client?.prenom }}</h2>
-  <p>Statut : {{ client?.user?.role }}</p> <h3>Informations Personnelles</h3>
-  <ul>
-    <li>Email : {{ client?.user?.email }}</li> <li>Adresse : {{ client?.adresse }}</li>
-    <li>Code postal : {{ client?.codePostal }}</li>
-    <li>Ville : {{ client?.ville }}</li>
-  </ul>
+<div class="profile-container">
+  <h2>Profil</h2>
+  @if(user && client){
+    <ul>
+      <li>Nom: {{ client.data.nom }}</li>
+      <li>Prenom: {{ client.data.prenom }}</li>
+      <li>Adresse: {{ client.data.adresse }}</li>
+      <li>Ville: {{ client.data.ville }}</li>
+      <li>Code Postal: {{ client.data.code_postal }}</li>
+      <li>Name: {{ user.name }}</li>
+      <li>Email: {{ user.email }}</li>
+      <li>role: {{ user.role }}</li>
+    </ul>
+    <img src= "{{ client.data.avatar }}" alt="avatar" />
 
-  <h3>Informations de Compte</h3>
-  <ul>
-    <li>Rôle : {{ client?.user?.role }}</li> </ul>
-
+    <ul>
+      @for(reservation of reservations; track reservation) {
+        <li>Nom: {{ reservation }}</li>
+    }
+    </ul>
+  }
 </div>

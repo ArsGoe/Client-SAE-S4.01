@@ -34,6 +34,9 @@
 <p>
   <mat-toolbar color="primary" class="menu">
     <a class="titre">TicketMain</a>
+    @if(auth.isLoggedIn$ | async) {
+      <span>Welcome, {{ name }}</span>
+    }
     <a [routerLink]="['/']"><span>Accueil</span></a>
     @if(auth.isLoggedIn$ | async) {
     <a [routerLink]="['profil']"><span>Profil</span></a>
@@ -46,6 +49,7 @@
     <a [routerLink]="['register']"><span>Register</span></a>
     }
   </mat-toolbar>
+
 </p>
 
 <div class="container">

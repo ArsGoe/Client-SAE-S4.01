@@ -9,7 +9,7 @@ import { Reservation } from '../models/reservation';
 })
 export class ReservationService {
 
-  private url = '';
+  private url = 'http://127.0.0.1:8000/api/clients';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class ReservationService {
   }
 
   getReservation(id: number): Observable<Reservation> {
-    return this.http.get<Reservation>(`${this.url}/${id}`);
+    return this.http.get<Reservation>(`${this.url}/${id}`, {});
   }
 
   createReservation(reservation: Reservation): Observable<Reservation> {
