@@ -1,4 +1,4 @@
-import {User} from "./user";
+import {ANONYMOUS_USER, Role, User} from "./user";
 
 export interface Client {
   id: number;
@@ -10,3 +10,14 @@ export interface Client {
   user: User;
   avatar: string;
 }
+
+export const ANONYMOUS_CLIENT: Client = <Client>{
+  id: 0,
+  nom: '',
+  prenom: '',
+  adresse: '',
+  code_postal: '',
+  ville: '',
+  user: ANONYMOUS_USER,
+  avatar: '',
+};
