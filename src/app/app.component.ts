@@ -4,6 +4,7 @@ import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {MatToolbar} from "@angular/material/toolbar";
 import {AuthService} from "./services/auth.service";
 import {MatMenuItem} from "@angular/material/menu";
+import {ClientService} from "./services/client.service";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import {MatMenuItem} from "@angular/material/menu";
 export class AppComponent implements OnInit{
   title = 'clientSae';
   private nom: any;
-  constructor(private authService: AuthService, private router: Router) {}
+  userRole: any;
+  constructor(private authService: AuthService, private router: Router, private clientService: ClientService) {}
   logout(){
     this.authService.logout();
     this.router.navigate(['/']);
@@ -37,6 +39,18 @@ export class AppComponent implements OnInit{
         this.nom = null;
       }
     });
+    this.authService.user$.subscribe(async user => {
+      this.userRole = user.role;
+    });
+  }
+
+  isAdminGestionnaire(){
+    if(this.userRole == "ADMIN" || this.userRole == "GESTIONNAIRE"){
+      return true
+    }
+    else{
+      return false
+    }
   }
 }
 

@@ -34,7 +34,6 @@ export class LoginComponent {
   constructor(private authService: AuthService,
               private route: ActivatedRoute,
               private router: Router) {
-    console.log("dans login")
   }
 
   get email() {

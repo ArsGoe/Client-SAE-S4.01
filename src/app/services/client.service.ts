@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Client } from '../models/client';
+import {environment} from "../../environments/environment";
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +22,11 @@ export class ClientService {
   constructor(private http: HttpClient) {}
 
   getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.url, {});
+    return this.http.get<Client[]>(this.url, httpOptions);
   }
 
   getClient(id: number): Observable<Client> {
-    return this.http.get<Client>(`${this.url}/${id}`, {})
-  }
-
-  getMe(token:string): Observable<Client> {
-    let url1 = 'http://127.0.0.1:8000/api';
-    const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/Json', 'Content-Type': 'application/json'}
-    return this.http.get<Client>(`${url1}/me`, { headers })
+    return this.http.get<Client>(`${this.url}/${id}`, httpOptions)
   }
 
   createClient(client: Client): Observable<Client> {

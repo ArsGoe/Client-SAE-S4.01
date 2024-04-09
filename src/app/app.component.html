@@ -48,6 +48,9 @@
     <a [routerLink]="['login']"><span>Login</span></a>
     <a [routerLink]="['register']"><span>Register</span></a>
     }
+    @if(isAdminGestionnaire()) {
+      <a [routerLink]="['liste-clients']"><span>Liste des clients</span></a>
+    }
   </mat-toolbar>
 
 </p>

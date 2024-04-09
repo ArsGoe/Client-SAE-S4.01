@@ -6,8 +6,30 @@
   display: flex;
 }
 
-.titre[_ngcontent-ng-c2105885682]{
-  padding-right: 50px;
+.mat-toolbar > a:nth-child(2) > span:nth-child(1){
+  font-size: 25px;
+}
+.mat-toolbar > a:nth-child(4) {
+  font-size: 25px;
+}
+.mat-toolbar > a:nth-child(3){
+  font-size: 25px;
+}
+.mat-toolbar > a:nth-child(5) {
+  font-size: 25px;
+}
+.mat-toolbar > a:nth-child(6) {
+  font-size: 25px;
+}
+.mat-toolbar > a:nth-child(7){
+  font-size: 25px;
+}
+.mat-toolbar > a:nth-child(8){
+  font-size: 25px;
+}
+
+.titre[_ngcontent-ng-c2167019915]{
+  padding-right: 25px;
 }
 
 .main {

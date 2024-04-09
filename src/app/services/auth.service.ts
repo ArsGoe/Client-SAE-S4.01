@@ -15,6 +15,7 @@ const httpOptions = {
   })
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +23,7 @@ export class AuthService {
   private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(ANONYMOUS_USER);
   public user$: Observable<User> = this.userSubject.asObservable();
 
-  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user =>  !!user.id));
+  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user =>  !!user.jwtToken));
   isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
 
   constructor(private http: HttpClient,
@@ -82,7 +83,7 @@ export class AuthService {
     const oldUser = this.userValue;
     let token = ''
     this.user$.subscribe(user => {token = user.jwtToken});
-    this.http.post<any>(`${environment.apiURL}/logout`, { 'Authorization': `Bearer ${{token}}`, 'Accept': 'application/Json', 'Content-Type': 'application/json'}, httpOptions)
+    this.http.post<any>(`${environment.apiURL}/logout`, {}, httpOptions)
       .pipe()
       .subscribe(user => {
           this.snackbar.open(`A bientôt, ${oldUser.name}`, 'Close', {
@@ -103,6 +104,7 @@ export class AuthService {
   }
 
   public get userValue(): User {
+    console.log("userValue", this.userSubject.value)
     return this.userSubject.value;
   }
 
