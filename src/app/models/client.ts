@@ -5,7 +5,7 @@ export interface Client {
   nom: string;
   prenom: string;
   adresse: string;
-  codePostal: string;
+  code_postal: string;
   ville: string;
   user: User;
   avatar: string;
