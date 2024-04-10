@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
   userRole: any;
   events: any;
 
-  constructor(private authService: AuthService, private router: Router, private clientService: ClientService, private evenementsService: EvenementService) {}
+  constructor(private authService: AuthService, private router: Router, private clientService: ClientService) {}
   logout(){
     this.authService.logout();
     this.router.navigate(['/']);
@@ -46,13 +46,7 @@ export class AppComponent implements OnInit{
     this.authService.user$.subscribe(async user => {
       this.userRole = user.role;
     });
-    this.evenementsService.getEvenements().subscribe(events => {
-      this.events = (shuffle(events)).slice(0,5)
-    })
-    const shuffle = (array: Evenement[]) => {
-      return array.sort(() => Math.random() - 0.5);
-    };
-    this.events = shuffle(this.events);
+
   }
 
   isAdminGestionnaire(){

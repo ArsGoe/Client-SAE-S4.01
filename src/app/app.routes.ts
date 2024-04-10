@@ -11,8 +11,10 @@ import {ListeClientsComponent} from "./liste-clients/liste-clients.component";
 import {DetailClientComponent} from "./detail-client/detail-client.component";
 import {UpdateClientComponent} from "./update-client/update-client.component";
 import {UpdateProfilComponent} from "./update-profil/update-profil.component";
+import {AccueilComponent} from "./accueil/accueil.component";
 
 export const routes: Routes = [
+  {path: '', component: AccueilComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profil', component: ProfilComponent},
