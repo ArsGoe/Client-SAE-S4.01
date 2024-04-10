@@ -9,7 +9,7 @@ import { Reservation } from '../models/reservation';
 })
 export class ReservationService {
 
-  private url = 'http://127.0.0.1:8000/api/clients';
+  private url = 'http://127.0.0.1:8000/api/reservations';
 
   constructor(private http: HttpClient) {}
 

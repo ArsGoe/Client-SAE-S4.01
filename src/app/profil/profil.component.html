@@ -1,6 +1,6 @@
 <div class="profile-container">
-  <h2>Profil</h2>
-  @if(user && client){
+  <h1>Profil</h1>
+  @if(user && client && reservations){
     <ul>
       <li>Nom: {{ client.data.nom }}</li>
       <li>Prenom: {{ client.data.prenom }}</li>
@@ -11,13 +11,25 @@
       <li>Email: {{ user.email }}</li>
       <li>role: {{ user.role }}</li>
     </ul>
-    <img src= "{{ client.data.avatar }}" alt="avatar" />
+    <img [src]="cheminImage" alt="avatar" />
 
-    <ul>
-      @for(reservation of reservations; track reservation) {
-        <li>Nom: {{ reservation }}</li>
-    }
-    </ul>
+      <h2>Vos reservations: </h2>
+      <ul>
+        <li>
+        @for(reservation of reservations.data; track reservation) {
+            <li>Statut: {{ reservation.statut }}</li>
+            <li>Mantant: {{ reservation.montant }}</li>
+            <li>Date: {{ reservation.date_res }}</li>
+            <li>Billets:</li>
+            @for(billet of reservation.billets; track billet) {
+            <ul>
+                <li>Prix: {{ billet.prix_unitaire }}, Quantité: {{ billet.quantite }}</li>
+                        </ul>
+            }
+        <br>
+        }
+        </li>
+      </ul>
     <a [routerLink]="['/update-profil', client.data.id]">Modifier votre profil</a>
   }
 </div>
