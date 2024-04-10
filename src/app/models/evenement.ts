@@ -28,7 +28,7 @@ export const UNKNOWN_EVENEMENT = {
     id: 1,
     nom: "La Tour Eiffel",
     adresse: "Champ de Mars, 5 Avenue Anatole France",
-    codePostal: "75007",
+    code_postal: "75007",
     ville: "Paris",
     lat: 48.858222,
     long: 2.294494,

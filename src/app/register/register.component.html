@@ -53,8 +53,8 @@
           }
         </mat-form-field>
         <mat-form-field>
-          <input type="text" matInput placeholder="Code postal" formControlName="codePostal">
-          @if (codePostal?.touched && codePostal?.hasError('required')) {
+          <input type="text" matInput placeholder="Code postal" formControlName="code_postal">
+          @if (code_postal?.touched && code_postal?.hasError('required')) {
           <mat-error>
             Le code postal est obligatoire
           </mat-error>
