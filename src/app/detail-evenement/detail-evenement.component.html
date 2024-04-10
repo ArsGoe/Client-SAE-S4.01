@@ -1,0 +1,66 @@
+<div>
+  <h1> Informations de l'événement</h1>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="titre">
+      <th mat-header-cell *matHeaderCellDef> Titre</th>
+      <td mat-cell *matCellDef="let element">  {{element[0]['titre']}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description</th>
+      <td mat-cell *matCellDef="let element"> {{element[0]['description']}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date_event">
+      <th mat-header-cell *matHeaderCellDef> Date</th>
+      <td mat-cell *matCellDef="let element"> {{element[0]['date_event']}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type</th>
+      <td mat-cell *matCellDef="let element"> {{element[0]['type']}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lieu">
+      <th mat-header-cell *matHeaderCellDef> Lieu</th>
+      <td mat-cell *matCellDef="let element"> {{element[0]['lieu']}}</td>
+    </ng-container>
+    <!-- La ligne -->
+    <tr mat-header-row *matHeaderRowDef="lesColonnes; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: lesColonnes;"></tr>
+
+  </table>
+
+</div>
+
+<br> <br>
+
+<div>
+  <h1> Modifier l'événement ?</h1>
+
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="modif">
+      <th mat-header-cell *matHeaderCellDef> modifier l'élément :</th>
+      <td mat-cell *matCellDef="let element">
+        <div>
+          {{element['0']['id']}}
+          <button [routerLink]="['/modification-evenement', element['0']['id']]"> Oui !</button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="lesColonnes1; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: lesColonnes1;"></tr>
+  </table>
+</div>
+
+<br> <br>
+
+<div>
+  <h1> Supprimer l'événement ?</h1>
+
+  <div>
+    <button (click)="suppression()"> Oui !</button>
+    <button [routerLink]="['/liste-evenement']"> Non...</button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div>
+  <h1> Informations du client</h1>
+  <h2> {{user.message.nom}} {{user.message.prenom}}</h2>
+  <div>
+    <ul>
+      <li>Nom: {{ user.message.nom }}</li>
+      <li>Prenom: {{ user.message.prenom }}</li>
+      <li>Adresse: {{ user.message.adresse }}</li>
+      <li>Ville: {{ user.message.ville }}</li>
+      <li>Code Postal: {{ user.message.code_postal }}</li>
+      <li>Name: {{ user.message.name }}</li>
+      <li>Email: {{ user.message.email }}</li>
+      <li>role: {{ user.message.role }}</li>
+    </ul>
+  </div>
+  <a [routerLink]="['/update-client', user.message.id]">Modifier le client</a>
+</div>
