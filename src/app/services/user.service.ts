@@ -10,7 +10,7 @@ import {Client} from "../models/client";
 })
 export class UserService {
 
-  private url = '';
+  private url = 'http://127.0.0.1:8000/api/users';
 
   constructor(private http: HttpClient) {}
 

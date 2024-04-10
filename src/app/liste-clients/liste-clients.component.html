@@ -1,0 +1,9 @@
+<div>
+  <h2>Liste des clients</h2>
+  <ul>
+    @for(client of clients; track client) {
+      <li [routerLink]="['/detail-client', client['id']]">Nom: {{ client['nom'] }} , Prenom: {{ client['prenom'] }} , Adresse: {{ client['adresse']}} , Ville: {{ client['ville']}} , Code Postal: {{ client['code_postal'] }}, CLIQUEZ POUR LE DETAIL</li>
+    }
+  </ul>
+</div>
+
