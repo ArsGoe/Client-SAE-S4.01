@@ -13,8 +13,6 @@ export function jwtInterceptor(request: HttpRequest<any>, next: HttpHandlerFn) {
   const user: User = authService.userValue;
   const isLoggedIn = !!user.id && !!user.jwtToken;
   const isApiUrl = request.url.startsWith(environment.apiURL);
-  console.log("test: ", isLoggedIn, isApiUrl)
-  console.log(environment.apiURL)
   if (isLoggedIn && isApiUrl) {
     request = request.clone({
       setHeaders: {Authorization: `Bearer ${user.jwtToken}`}

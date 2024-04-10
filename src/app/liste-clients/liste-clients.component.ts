@@ -55,7 +55,6 @@ export class ListeClientsComponent implements OnInit{
     this.serviceClients.getClients()
       .subscribe(clients => {
         this.clients = clients.data;
-        console.log(this.clients)
       });
   }
 

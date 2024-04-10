@@ -1,4 +1,5 @@
 <div>
+  @if(user){
   <h1> Informations du client</h1>
   <h2> {{user.message.nom}} {{user.message.prenom}}</h2>
   <div>
@@ -14,4 +15,5 @@
     </ul>
   </div>
   <a [routerLink]="['/update-client', user.message.id]">Modifier le client</a>
+  }
 </div>
