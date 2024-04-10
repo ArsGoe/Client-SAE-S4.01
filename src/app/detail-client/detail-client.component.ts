@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {EvenementService} from "../services/evenement.service";
 import {ClientService} from "../services/client.service";
 import {ANONYMOUS_CLIENT, Client} from "../models/client";
@@ -9,7 +9,9 @@ import {UserService} from "../services/user.service";
 @Component({
   selector: 'app-detail-client',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './detail-client.component.html',
   styleUrl: './detail-client.component.css'
 })
