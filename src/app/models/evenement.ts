@@ -5,24 +5,24 @@ export interface Evenement {
   id: number;
   titre: string;
   description: string;
-  dateEvent: Date;
+  date_event: Date;
   type: TypeEvenement;
   lieu: Lieu;
 }
 
 export enum TypeEvenement {
-  THEATRE,
-  CINEMA,
-  CONCERT,
-  FESTIVAL,
-  COMPETITION
+  THEATRE = "THEATRE",
+  CINEMA = "CINEMA",
+  CONCERT = "CONCERT",
+  FESTIVAL = "FESTIVAL",
+  COMPETITION = "COMPETITION"
 }
 
 export const UNKNOWN_EVENEMENT = {
   id: 0,
   titre: "N.C.",
   description: "N.C.",
-  dateEvent: new Date(2020, 1,1),
+  date_event: new Date(2020, 1,1),
   type : TypeEvenement.COMPETITION,
   lieu: {
     id: 1,

@@ -9,7 +9,7 @@ import { Evenement } from '../models/evenement';
 })
 export class EvenementService {
 
-  private url = 'http://localhost:8000/api/evenements';
+  private url = 'http://127.0.0.1:8000/api/evenements';
 
   constructor(private http: HttpClient) {}
 
@@ -25,8 +25,8 @@ export class EvenementService {
     return this.http.post<Evenement>(this.url, evenement);
   }
 
-  updateEvenement(evenement: Evenement): Observable<Evenement> {
-    return this.http.put<Evenement>(`${this.url}/${evenement.id}`, evenement);
+  updateEvenement(evenement: any): Observable<Evenement> {
+    return this.http.put<Evenement>(`${this.url}/${evenement.id['0']['id']}`, evenement);
   }
 
   deleteEvenement(id: number): Observable<any> {
