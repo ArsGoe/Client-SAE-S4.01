@@ -23,7 +23,6 @@ export class DetailClientComponent implements OnInit{
   ngOnInit(): void {
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
     this.userService.getUser(id).subscribe( user => {
-      console.log("ADAZD",user)
       this.user = user;
     });
   }

@@ -21,11 +21,12 @@ export class ProfilComponent implements OnInit{
   user: any;
   client : any;
   reservations : any;
+  cheminImage:any = "../assets/avatar_default.png";
 
   constructor(
     private authService: AuthService,
     private clientService: ClientService,
-    private resservationService: ReservationService,
+    private reservationService: ReservationService,
   ) {}
 
 
@@ -37,6 +38,9 @@ export class ProfilComponent implements OnInit{
           this.client = client;
         });
       }
+    });
+    this.reservationService.getReservations().subscribe( reservations => {
+      this.reservations = reservations;
     });
   }
 }

@@ -109,7 +109,6 @@ export class AuthService {
   }
 
   public get userValue(): User {
-    console.log("userValue", this.userSubject.value)
     return this.userSubject.value;
   }
 

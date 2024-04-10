@@ -48,7 +48,6 @@ export class ListeEvenementComponent implements OnInit {
               private router: Router) {
     this.evenements$ = this.serviceEvenements.getEvenements();
     this.evenements$.subscribe(reponse => {
-        console.log('le flux de l\'observable', reponse);
         this.evenements = reponse;
     })
 
