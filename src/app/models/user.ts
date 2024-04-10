@@ -24,6 +24,11 @@ export enum Role {
 export interface RegisterRequest {
   email: string;
   password: string;
+  prenom: string;
+  adresse: string;
+  code_postal: string;
+  ville: string;
+  nom: string;
   name: string;
 }
 

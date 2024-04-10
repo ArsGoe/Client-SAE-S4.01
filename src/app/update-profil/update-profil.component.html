@@ -1,6 +1,6 @@
 <div>
   <mat-card>
-    <mat-card-title>Modification du client</mat-card-title>
+    <mat-card-title>Modification du profil</mat-card-title>
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="enregistrer()">
 
@@ -48,48 +48,6 @@
           </mat-error>
           }
         </mat-form-field>
-
-        <mat-form-field>
-          <input type="name" matInput placeholder="Name" formControlName="name">
-          @if (name?.touched && name?.hasError('required')) {
-          <mat-error>
-            Le name est obligatoire
-          </mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field>
-          <input type="email" matInput placeholder="Email" formControlName="email">
-          @if (email?.touched && email?.hasError('required')) {
-          <mat-error>
-            L'adresse mail est obligatoire
-          </mat-error>
-          }
-          @if (email?.touched && email?.hasError('email')) {
-          <mat-error>
-            Doit être une adresse mail valide
-          </mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field>
-          <input type="role" matInput placeholder="Role" formControlName="role">
-          @if (role?.touched && role?.hasError('required')) {
-          <mat-error>
-            Le role est obligatoire
-          </mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field>
-          <input type="password" matInput placeholder="Password" formControlName="password">
-          @if (password?.touched && password?.hasError('required')) {
-          <mat-error>
-            Le password est obligatoire
-          </mat-error>
-          }
-        </mat-form-field>
-
 
         <div class="button">
           <button type="submit" mat-button [disabled]="!form.valid">Enregister</button>

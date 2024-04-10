@@ -8,6 +8,7 @@ import {DetailEvenementComponent} from "./detail-evenement/detail-evenement.comp
 import {ListeClientsComponent} from "./liste-clients/liste-clients.component";
 import {DetailClientComponent} from "./detail-client/detail-client.component";
 import {UpdateClientComponent} from "./update-client/update-client.component";
+import {UpdateProfilComponent} from "./update-profil/update-profil.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,5 +20,6 @@ export const routes: Routes = [
   {path: 'detail-evenement/:id', component: DetailEvenementComponent},
   {path: 'detail-client/:id', component: DetailClientComponent},
   {path: 'update-client/:id', component: UpdateClientComponent},
+  {path: 'update-profil/:id', component: UpdateProfilComponent},
   {path: 'suppression-evenement/:id', component: DetailEvenementComponent},
 ];

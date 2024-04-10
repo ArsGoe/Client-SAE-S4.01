@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Client} from "../models/client";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ClientService} from "../services/client.service";
 import {AuthService} from "../services/auth.service";
 import {Profil, User} from "../models/user";
@@ -11,7 +11,9 @@ import {ReservationService} from "../services/reservation.service";
 @Component({
   selector: 'app-profil',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './profil.component.html',
   styleUrl: './profil.component.css'
 })

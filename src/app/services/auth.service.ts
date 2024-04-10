@@ -55,9 +55,14 @@ export class AuthService {
 
   register(request: RegisterRequest): Observable<User> {
     return this.http.post<any>(`${environment.apiURL}/register`, {
-      name: request.name,
+      nom: request.name,
+      prenom: request.prenom,
+      name: request.name + request.prenom,
       email: request.email,
-      password: request.password
+      password: request.password,
+      code_postal: request.code_postal,
+      ville: request.ville,
+      adresse: request.adresse,
     }, httpOptions).pipe(
       map(rep => {
         const user = {...rep.user, jwtToken: rep.authorisation.token};

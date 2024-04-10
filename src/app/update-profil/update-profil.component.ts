@@ -10,7 +10,7 @@ import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 
 @Component({
-  selector: 'app-update-client',
+  selector: 'app-update-profil',
   standalone: true,
   imports: [
     RouterLink,
@@ -23,10 +23,10 @@ import {MatButton} from "@angular/material/button";
     MatButton,
     MatError
   ],
-  templateUrl: './update-client.component.html',
-  styleUrl: './update-client.component.css'
+  templateUrl: './update-profil.component.html',
+  styleUrl: './update-profil.component.css'
 })
-export class UpdateClientComponent implements OnInit{
+export class UpdateProfilComponent implements OnInit{
   user: any = "";
 
   constructor(private route: ActivatedRoute, private clientServices: ClientService, private userService: UserService, private router: Router) {
@@ -46,10 +46,6 @@ export class UpdateClientComponent implements OnInit{
     adresse: new FormControl("", [Validators.required]),
     ville: new FormControl("", [Validators.required]),
     code_postal: new FormControl("", [Validators.required]),
-    name: new FormControl("", [Validators.required]),
-    email: new FormControl("", [Validators.required, Validators.email]),
-    role: new FormControl("", [Validators.required]),
-    password: new FormControl("", [Validators.required]),
   });
 
   updateFormControls() {
@@ -59,10 +55,6 @@ export class UpdateClientComponent implements OnInit{
       this.adresse?.setValue(this.user.message?.adresse || '');
       this.ville?.setValue(this.user.message?.ville || '');
       this.code_postal?.setValue(this.user.message?.code_postal || '');
-      this.name?.setValue(this.user.message?.name || '');
-      this.email?.setValue(this.user.message?.email || '');
-      this.role?.setValue(this.user.message?.role || '');
-      this.password?.setValue(this.user.message?.password || '');
     }
   }
 
@@ -106,23 +98,12 @@ export class UpdateClientComponent implements OnInit{
     if (!this.form.valid) {
       return;
     }
-    this.userService.updateUser({id:this.user.message.id, role:this.role!.value, name: this.name!.value, email: this.email!.value, jwtToken: this.user.message.jwtToken,password: this.password!.value || this.user.message.password})
-      .pipe(first())
-      .subscribe({
-          next: () => {
-            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/detail-client/'+this.user.message.id;
-            this.router.navigateByUrl(returnUrl);
-          },
-          error: error => {
-            console.log(error);
-          }
-        }
-      );
+    //this.userService.updateUser({id:this.user.message.id, role:this.role!.value, name: this.name!.value, email: this.email!.value, jwtToken: this.user.message.jwtToken,password: this.password!.value || this.user.message.password})
     this.clientServices.updateClient({id: this.user.message.id, user: this.user.message.user, avatar: this.user.message.avatar, nom: this.nom!.value, prenom : this.prenom!.value, adresse: this.adresse!.value, ville: this.ville!.value, code_postal: this.code_postal!.value})
       .pipe(first())
       .subscribe({
           next: () => {
-            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/detail-client/'+this.user.message.id;
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profil';
             this.router.navigateByUrl(returnUrl);
           },
           error: error => {

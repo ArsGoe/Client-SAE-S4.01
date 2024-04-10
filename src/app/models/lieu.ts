@@ -2,7 +2,7 @@ export interface Lieu {
   id: number;
   nom: string;
   adresse: string;
-  codePostal: string;
+  code_postal: string;
   ville: string;
   lat: number;
   long: number;

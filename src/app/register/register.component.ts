@@ -33,7 +33,7 @@ export class RegisterComponent {
       prenom: new FormControl('', [Validators.required]),
       adresse: new FormControl('', [Validators.required]),
       ville: new FormControl('', [Validators.required]),
-      codePostal: new FormControl('', [Validators.required]),
+      code_postal: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
       passwordConfirm: new FormControl('', [Validators.required])
     },
@@ -68,8 +68,8 @@ export class RegisterComponent {
     return this.registerForm.get('ville');
   }
 
-  get codePostal() {
-    return this.registerForm.get('codePostal');
+  get code_postal() {
+    return this.registerForm.get('code_postal');
   }
 
   get adresse() {
