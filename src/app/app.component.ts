@@ -5,6 +5,8 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {AuthService} from "./services/auth.service";
 import {MatMenuItem} from "@angular/material/menu";
 import {ClientService} from "./services/client.service";
+import {EvenementService} from "./services/evenement.service";
+import {Evenement} from "./models/evenement";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,9 @@ export class AppComponent implements OnInit{
   title = 'clientSae';
   private nom: any;
   userRole: any;
-  constructor(private authService: AuthService, private router: Router, private clientService: ClientService) {}
+  events: any;
+
+  constructor(private authService: AuthService, private router: Router, private clientService: ClientService, private evenementsService: EvenementService) {}
   logout(){
     this.authService.logout();
     this.router.navigate(['/']);
@@ -42,6 +46,13 @@ export class AppComponent implements OnInit{
     this.authService.user$.subscribe(async user => {
       this.userRole = user.role;
     });
+    this.evenementsService.getEvenements().subscribe(events => {
+      this.events = (shuffle(events)).slice(0,5)
+    })
+    const shuffle = (array: Evenement[]) => {
+      return array.sort(() => Math.random() - 0.5);
+    };
+    this.events = shuffle(this.events);
   }
 
   isAdminGestionnaire(){
