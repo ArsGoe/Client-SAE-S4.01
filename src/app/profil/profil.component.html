@@ -26,6 +26,8 @@
                 <li>Prix: {{ billet.prix_unitaire }}, Quantité: {{ billet.quantite }}</li>
                         </ul>
             }
+            <a [routerLink]="['/update-reservation', reservation.id]">Modifier cette reservation</a>
+        <br>
         <br>
         }
         </li>

@@ -57,6 +57,15 @@ export class AppComponent implements OnInit{
       return false
     }
   }
+
+  isAdminGestionnaireActif(){
+    if(this.userRole == "ADMIN" || this.userRole == "GESTIONNAIRE" || this.userRole == "ACTIF"){
+      return true
+    }
+    else{
+      return false
+    }
+  }
 }
 
 

@@ -40,6 +40,7 @@ export class ProfilComponent implements OnInit{
       }
     });
     this.reservationService.getReservations().subscribe( reservations => {
+      console.log(reservations)
       this.reservations = reservations;
     });
   }

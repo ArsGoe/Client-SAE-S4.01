@@ -12,6 +12,7 @@ import {DetailClientComponent} from "./detail-client/detail-client.component";
 import {UpdateClientComponent} from "./update-client/update-client.component";
 import {UpdateProfilComponent} from "./update-profil/update-profil.component";
 import {AccueilComponent} from "./accueil/accueil.component";
+import {UpdateReservationComponent} from "./update-reservation/update-reservation.component";
 
 export const routes: Routes = [
   {path: '', component: AccueilComponent},
@@ -23,6 +24,7 @@ export const routes: Routes = [
   {path: 'liste-clients', component: ListeClientsComponent},
   {path: 'detail-evenement/:id', component: DetailEvenementComponent},
   {path: 'modification-evenement/:id', component: ModificationEvenementComponent},
+  {path: 'update-reservation/:id', component: UpdateReservationComponent},
   {path: 'detail-client/:id', component: DetailClientComponent},
   {path: 'update-client/:id', component: UpdateClientComponent},
   {path: 'update-profil/:id', component: UpdateProfilComponent},

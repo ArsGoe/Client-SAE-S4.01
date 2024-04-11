@@ -4,7 +4,7 @@
 
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="titre">
-      <th mat-header-cell *matHeaderCellDef> #</th>
+      <th mat-header-cell *matHeaderCellDef>Liste des événements</th>
       <td mat-cell *matCellDef="let element"> <a [routerLink]="['/detail-evenement', element.id]"> {{element.titre}}</a></td>
     </ng-container>
     <!-- La ligne -->
