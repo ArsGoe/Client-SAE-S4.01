@@ -1,0 +1,37 @@
+<div class="profile-container">
+  <h1>Profil</h1>
+  @if(user && client && reservations){
+    <ul>
+      <li>Nom: {{ client.data.nom }}</li>
+      <li>Prenom: {{ client.data.prenom }}</li>
+      <li>Adresse: {{ client.data.adresse }}</li>
+      <li>Ville: {{ client.data.ville }}</li>
+      <li>Code Postal: {{ client.data.code_postal }}</li>
+      <li>Name: {{ user.name }}</li>
+      <li>Email: {{ user.email }}</li>
+      <li>role: {{ user.role }}</li>
+    </ul>
+    <img [src]="cheminImage" alt="avatar" />
+
+      <h2>Vos reservations: </h2>
+      <ul>
+        <li>
+        @for(reservation of reservations.data; track reservation) {
+            <li>Statut: {{ reservation.statut }}</li>
+            <li>Mantant: {{ reservation.montant }}</li>
+            <li>Date: {{ reservation.date_res }}</li>
+            <li>Billets:</li>
+            @for(billet of reservation.billets; track billet) {
+            <ul>
+                <li>Prix: {{ billet.prix_unitaire }}, Quantité: {{ billet.quantite }}</li>
+                        </ul>
+            }
+            <a [routerLink]="['/update-reservation', reservation.id]">Modifier cette reservation</a>
+        <br>
+        <br>
+        }
+        </li>
+      </ul>
+    <a [routerLink]="['/update-profil', client.data.id]">Modifier votre profil</a>
+  }
+</div>

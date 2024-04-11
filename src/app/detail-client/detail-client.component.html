@@ -1,0 +1,38 @@
+<div>
+  @if(user){
+  <h1> Informations du client</h1>
+  <h2> {{user.message.nom}} {{user.message.prenom}}</h2>
+  <div>
+    <ul>
+      <li>Nom: {{ user.message.nom }}</li>
+      <li>Prenom: {{ user.message.prenom }}</li>
+      <li>Adresse: {{ user.message.adresse }}</li>
+      <li>Ville: {{ user.message.ville }}</li>
+      <li>Code Postal: {{ user.message.code_postal }}</li>
+      <li>Name: {{ user.message.name }}</li>
+      <li>Email: {{ user.message.email }}</li>
+      <li>role: {{ user.message.role }}</li>
+    </ul>
+  </div>
+  <a [routerLink]="['/update-client', user.message.id]">Modifier le client</a>
+  }
+  <h2>Les reservations du clients: </h2>
+  <ul>
+    <li>
+      @for(reservation of reservations.data; track reservation) {
+      <li>Statut: {{ reservation.statut }}</li>
+            <li>Mantant: {{ reservation.montant }}</li>
+            <li>Date: {{ reservation.date_res }}</li>
+            <li>Billets:</li>
+            @for(billet of reservation.billets; track billet) {
+      <ul>
+        <li>Prix: {{ billet.prix_unitaire }}, Quantité: {{ billet.quantite }}</li>
+      </ul>
+      }
+      <a [routerLink]="['/update-reservation', reservation.id]">Modifier cette reservation</a>
+  <br>
+  <br>
+      }
+    </li>
+  </ul>
+</div>
