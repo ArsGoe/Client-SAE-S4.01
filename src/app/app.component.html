@@ -41,9 +41,6 @@
     @if(auth.isLoggedIn$ | async) {
     <a [routerLink]="['profil']"><span>Profil</span></a>
     <a [routerLink]="['liste-evenement']"><span>Liste des événements</span></a>
-    @if(isAdminGestionnaireActif()) {
-      <a [routerLink]="['liste-reservation']"><span>Liste des réservations</span></a>
-    }
     }
     @else {
     <a [routerLink]="['login']"><span>Login</span></a>

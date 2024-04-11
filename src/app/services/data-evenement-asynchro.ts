@@ -6,7 +6,6 @@ import {EvenementService} from "./evenement.service";
 export class DataEvenementAsynchro extends DataSource<Evenement> {
   private evenementSubject = new BehaviorSubject<Evenement[]>([]);
 
-
   constructor(private evenementsService: EvenementService, private id : number) {
     super();
     this.setData();

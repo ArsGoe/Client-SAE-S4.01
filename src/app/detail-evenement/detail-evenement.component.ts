@@ -41,7 +41,7 @@ export class DetailEvenementComponent {
   lesColonnes1 = ['modif'];
   dataSource: DataEvenementAsynchro;
   _evenement: Evenement = UNKNOWN_EVENEMENT;
-
+  userRole: any;
 
   constructor(private route: ActivatedRoute, private evenementServices: EvenementService) {
     this.dataSource = new DataEvenementAsynchro(this.evenementServices, (parseInt(this.route.snapshot.paramMap.get('id')?? "0") || 0));
