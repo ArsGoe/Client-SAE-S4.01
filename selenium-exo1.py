@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 import time
 
+#Modifier les time.sleep si cela ne fonctionne pas (vous pouvez même en rajouter)
+
 
 class Selenium:
 
