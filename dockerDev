@@ -1,0 +1,17 @@
+# Utilisation de l'image Node.js officielle en tant que base
+FROM dh-iutl.univ-artois.fr/node:14
+
+# Configuration du répertoire de travail
+WORKDIR /app
+
+# Copie de tous les fichiers du projet Angular dans le conteneur
+COPY . .
+
+# Installation des dépendances du projet Angular
+RUN npm install
+
+# Exposer le port 4200 pour le serveur de développement Angular
+EXPOSE 4200
+
+# Commande par défaut pour lancer le serveur de développement Angular
+CMD ["npm", "start"]
